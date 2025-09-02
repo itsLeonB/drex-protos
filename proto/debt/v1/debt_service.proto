@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package debt.v1;
+
+import "debt/v1/debt_message.proto";
+
+option go_package = "github.com/itsLeonB/drex-protos/gen/go/debt/v1;debt";
+
+service DebtService {
+  rpc RecordNewTransaction(RecordNewTransactionRequest) returns (RecordNewTransactionResponse);
+  rpc GetTransactions(GetTransactionsRequest) returns (GetTransactionsResponse);
+  rpc ProcessConfirmedGroupExpense(ProcessConfirmedGroupExpenseRequest) returns (ProcessConfirmedGroupExpenseResponse);
+}

@@ -11,6 +11,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -30,7 +31,7 @@ const (
 type DebtServiceClient interface {
 	RecordNewTransaction(ctx context.Context, in *RecordNewTransactionRequest, opts ...grpc.CallOption) (*RecordNewTransactionResponse, error)
 	GetTransactions(ctx context.Context, in *GetTransactionsRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error)
-	ProcessConfirmedGroupExpense(ctx context.Context, in *ProcessConfirmedGroupExpenseRequest, opts ...grpc.CallOption) (*ProcessConfirmedGroupExpenseResponse, error)
+	ProcessConfirmedGroupExpense(ctx context.Context, in *ProcessConfirmedGroupExpenseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type debtServiceClient struct {
@@ -61,9 +62,9 @@ func (c *debtServiceClient) GetTransactions(ctx context.Context, in *GetTransact
 	return out, nil
 }
 
-func (c *debtServiceClient) ProcessConfirmedGroupExpense(ctx context.Context, in *ProcessConfirmedGroupExpenseRequest, opts ...grpc.CallOption) (*ProcessConfirmedGroupExpenseResponse, error) {
+func (c *debtServiceClient) ProcessConfirmedGroupExpense(ctx context.Context, in *ProcessConfirmedGroupExpenseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ProcessConfirmedGroupExpenseResponse)
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, DebtService_ProcessConfirmedGroupExpense_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -77,7 +78,7 @@ func (c *debtServiceClient) ProcessConfirmedGroupExpense(ctx context.Context, in
 type DebtServiceServer interface {
 	RecordNewTransaction(context.Context, *RecordNewTransactionRequest) (*RecordNewTransactionResponse, error)
 	GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error)
-	ProcessConfirmedGroupExpense(context.Context, *ProcessConfirmedGroupExpenseRequest) (*ProcessConfirmedGroupExpenseResponse, error)
+	ProcessConfirmedGroupExpense(context.Context, *ProcessConfirmedGroupExpenseRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedDebtServiceServer()
 }
 
@@ -94,7 +95,7 @@ func (UnimplementedDebtServiceServer) RecordNewTransaction(context.Context, *Rec
 func (UnimplementedDebtServiceServer) GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactions not implemented")
 }
-func (UnimplementedDebtServiceServer) ProcessConfirmedGroupExpense(context.Context, *ProcessConfirmedGroupExpenseRequest) (*ProcessConfirmedGroupExpenseResponse, error) {
+func (UnimplementedDebtServiceServer) ProcessConfirmedGroupExpense(context.Context, *ProcessConfirmedGroupExpenseRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProcessConfirmedGroupExpense not implemented")
 }
 func (UnimplementedDebtServiceServer) mustEmbedUnimplementedDebtServiceServer() {}

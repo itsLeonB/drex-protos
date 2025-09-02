@@ -281,42 +281,6 @@ func (x *ProcessConfirmedGroupExpenseRequest) GetGroupExpense() *GroupExpenseDat
 	return nil
 }
 
-type ProcessConfirmedGroupExpenseResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ProcessConfirmedGroupExpenseResponse) Reset() {
-	*x = ProcessConfirmedGroupExpenseResponse{}
-	mi := &file_debt_v1_debt_message_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ProcessConfirmedGroupExpenseResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ProcessConfirmedGroupExpenseResponse) ProtoMessage() {}
-
-func (x *ProcessConfirmedGroupExpenseResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_debt_v1_debt_message_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ProcessConfirmedGroupExpenseResponse.ProtoReflect.Descriptor instead.
-func (*ProcessConfirmedGroupExpenseResponse) Descriptor() ([]byte, []int) {
-	return file_debt_v1_debt_message_proto_rawDescGZIP(), []int{5}
-}
-
 var File_debt_v1_debt_message_proto protoreflect.FileDescriptor
 
 const file_debt_v1_debt_message_proto_rawDesc = "" +
@@ -336,8 +300,7 @@ const file_debt_v1_debt_message_proto_rawDesc = "" +
 	"\x17GetTransactionsResponse\x12@\n" +
 	"\ftransactions\x18\x01 \x03(\v2\x1c.debt.v1.TransactionResponseR\ftransactions\"e\n" +
 	"#ProcessConfirmedGroupExpenseRequest\x12>\n" +
-	"\rgroup_expense\x18\x01 \x01(\v2\x19.debt.v1.GroupExpenseDataR\fgroupExpense\"&\n" +
-	"$ProcessConfirmedGroupExpenseResponseB5Z3github.com/itsLeonB/drex-protos/gen/go/debt/v1;debtb\x06proto3"
+	"\rgroup_expense\x18\x01 \x01(\v2\x19.debt.v1.GroupExpenseDataR\fgroupExpenseB5Z3github.com/itsLeonB/drex-protos/gen/go/debt/v1;debtb\x06proto3"
 
 var (
 	file_debt_v1_debt_message_proto_rawDescOnce sync.Once
@@ -351,23 +314,22 @@ func file_debt_v1_debt_message_proto_rawDescGZIP() []byte {
 	return file_debt_v1_debt_message_proto_rawDescData
 }
 
-var file_debt_v1_debt_message_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_debt_v1_debt_message_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_debt_v1_debt_message_proto_goTypes = []any{
-	(*RecordNewTransactionRequest)(nil),          // 0: debt.v1.RecordNewTransactionRequest
-	(*RecordNewTransactionResponse)(nil),         // 1: debt.v1.RecordNewTransactionResponse
-	(*GetTransactionsRequest)(nil),               // 2: debt.v1.GetTransactionsRequest
-	(*GetTransactionsResponse)(nil),              // 3: debt.v1.GetTransactionsResponse
-	(*ProcessConfirmedGroupExpenseRequest)(nil),  // 4: debt.v1.ProcessConfirmedGroupExpenseRequest
-	(*ProcessConfirmedGroupExpenseResponse)(nil), // 5: debt.v1.ProcessConfirmedGroupExpenseResponse
-	(TransactionAction)(0),                       // 6: debt.v1.TransactionAction
-	(*TransactionResponse)(nil),                  // 7: debt.v1.TransactionResponse
-	(*GroupExpenseData)(nil),                     // 8: debt.v1.GroupExpenseData
+	(*RecordNewTransactionRequest)(nil),         // 0: debt.v1.RecordNewTransactionRequest
+	(*RecordNewTransactionResponse)(nil),        // 1: debt.v1.RecordNewTransactionResponse
+	(*GetTransactionsRequest)(nil),              // 2: debt.v1.GetTransactionsRequest
+	(*GetTransactionsResponse)(nil),             // 3: debt.v1.GetTransactionsResponse
+	(*ProcessConfirmedGroupExpenseRequest)(nil), // 4: debt.v1.ProcessConfirmedGroupExpenseRequest
+	(TransactionAction)(0),                      // 5: debt.v1.TransactionAction
+	(*TransactionResponse)(nil),                 // 6: debt.v1.TransactionResponse
+	(*GroupExpenseData)(nil),                    // 7: debt.v1.GroupExpenseData
 }
 var file_debt_v1_debt_message_proto_depIdxs = []int32{
-	6, // 0: debt.v1.RecordNewTransactionRequest.action:type_name -> debt.v1.TransactionAction
-	7, // 1: debt.v1.RecordNewTransactionResponse.transaction:type_name -> debt.v1.TransactionResponse
-	7, // 2: debt.v1.GetTransactionsResponse.transactions:type_name -> debt.v1.TransactionResponse
-	8, // 3: debt.v1.ProcessConfirmedGroupExpenseRequest.group_expense:type_name -> debt.v1.GroupExpenseData
+	5, // 0: debt.v1.RecordNewTransactionRequest.action:type_name -> debt.v1.TransactionAction
+	6, // 1: debt.v1.RecordNewTransactionResponse.transaction:type_name -> debt.v1.TransactionResponse
+	6, // 2: debt.v1.GetTransactionsResponse.transactions:type_name -> debt.v1.TransactionResponse
+	7, // 3: debt.v1.ProcessConfirmedGroupExpenseRequest.group_expense:type_name -> debt.v1.GroupExpenseData
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
@@ -387,7 +349,7 @@ func file_debt_v1_debt_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_debt_v1_debt_message_proto_rawDesc), len(file_debt_v1_debt_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

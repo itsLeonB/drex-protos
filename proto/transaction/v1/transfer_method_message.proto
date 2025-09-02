@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package transaction.v1;
+
+import "transaction/v1/domain.proto";
+
+option go_package = "github.com/itsLeonB/drex-protos/gen/go/transaction/v1;transaction";
+
+message GetAllResponse {
+  repeated TransferMethodResponse transfer_methods = 1;
+}

@@ -30,5 +30,3 @@ message GetTransactionsResponse {
 message ProcessConfirmedGroupExpenseRequest {
   GroupExpenseData group_expense = 1;
 }
-
-message ProcessConfirmedGroupExpenseResponse {}

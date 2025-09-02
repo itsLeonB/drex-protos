@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package transaction.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/itsLeonB/drex-protos/gen/go/transaction/v1;transaction";
+
+message TransferMethodResponse {
+  string id = 1;
+  string name = 2;
+  string display = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  google.protobuf.Timestamp deleted_at = 6;
+}

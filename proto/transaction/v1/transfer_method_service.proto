@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package transaction.v1;
+
+import "google/protobuf/empty.proto";
+import "transaction/v1/transfer_method_message.proto";
+
+option go_package = "github.com/itsLeonB/drex-protos/gen/go/transaction/v1;transaction";
+
+service TransferMethodService {
+  rpc GetAll(google.protobuf.Empty) returns (GetAllResponse);
+}

@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package debt.v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/type/money.proto";
+
+option go_package = "github.com/itsLeonB/drex-protos/gen/go/debt/v1;debt";
+
+enum TransactionAction {
+  TRANSACTION_ACTION_UNSPECIFIED = 0;
+  TRANSACTION_ACTION_LEND = 1;
+  TRANSACTION_ACTION_BORROW = 2;
+  TRANSACTION_ACTION_RECEIVE = 3;
+  TRANSACTION_ACTION_RETURN = 4;
+}
+
+enum TransactionType {
+  TRANSACTION_TYPE_UNSPECIFIED = 0;
+  TRANSACTION_TYPE_LEND = 1;
+  TRANSACTION_TYPE_REPAY = 2;
+}
+
+message TransactionResponse {
+  string id = 1;
+  string profile_id = 2;
+  TransactionType type = 3;
+  TransactionAction action = 4;
+  google.type.Money amount = 5;
+  string transfer_method = 6;
+  string description = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+  google.protobuf.Timestamp deleted_at = 10;
+}
+
+message GroupExpenseData {
+  string id = 1;
+  string payer_profile_id = 2;
+  string creator_profile_id = 3;
+  string description = 4;
+  repeated ExpenseParticipantData participants = 5;
+}
+
+message ExpenseParticipantData {
+  string profile_id = 1;
+  google.type.Money share_amount = 2;
+}

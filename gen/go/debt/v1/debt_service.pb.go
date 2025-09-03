@@ -25,29 +25,34 @@ var File_debt_v1_debt_service_proto protoreflect.FileDescriptor
 
 const file_debt_v1_debt_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1adebt/v1/debt_service.proto\x12\adebt.v1\x1a\x1adebt/v1/debt_message.proto\x1a\x1bgoogle/protobuf/empty.proto2\xae\x02\n" +
+	"\x1adebt/v1/debt_service.proto\x12\adebt.v1\x1a\x1adebt/v1/debt_message.proto\x1a\x1bgoogle/protobuf/empty.proto2\x8d\x03\n" +
 	"\vDebtService\x12c\n" +
 	"\x14RecordNewTransaction\x12$.debt.v1.RecordNewTransactionRequest\x1a%.debt.v1.RecordNewTransactionResponse\x12T\n" +
 	"\x0fGetTransactions\x12\x1f.debt.v1.GetTransactionsRequest\x1a .debt.v1.GetTransactionsResponse\x12d\n" +
-	"\x1cProcessConfirmedGroupExpense\x12,.debt.v1.ProcessConfirmedGroupExpenseRequest\x1a\x16.google.protobuf.EmptyB5Z3github.com/itsLeonB/drex-protos/gen/go/debt/v1;debtb\x06proto3"
+	"\x1cProcessConfirmedGroupExpense\x12,.debt.v1.ProcessConfirmedGroupExpenseRequest\x1a\x16.google.protobuf.Empty\x12]\n" +
+	"\x12GetAllByProfileIds\x12\".debt.v1.GetAllByProfileIdsRequest\x1a#.debt.v1.GetAllByProfileIdsResponseB5Z3github.com/itsLeonB/drex-protos/gen/go/debt/v1;debtb\x06proto3"
 
 var file_debt_v1_debt_service_proto_goTypes = []any{
 	(*RecordNewTransactionRequest)(nil),         // 0: debt.v1.RecordNewTransactionRequest
 	(*GetTransactionsRequest)(nil),              // 1: debt.v1.GetTransactionsRequest
 	(*ProcessConfirmedGroupExpenseRequest)(nil), // 2: debt.v1.ProcessConfirmedGroupExpenseRequest
-	(*RecordNewTransactionResponse)(nil),        // 3: debt.v1.RecordNewTransactionResponse
-	(*GetTransactionsResponse)(nil),             // 4: debt.v1.GetTransactionsResponse
-	(*emptypb.Empty)(nil),                       // 5: google.protobuf.Empty
+	(*GetAllByProfileIdsRequest)(nil),           // 3: debt.v1.GetAllByProfileIdsRequest
+	(*RecordNewTransactionResponse)(nil),        // 4: debt.v1.RecordNewTransactionResponse
+	(*GetTransactionsResponse)(nil),             // 5: debt.v1.GetTransactionsResponse
+	(*emptypb.Empty)(nil),                       // 6: google.protobuf.Empty
+	(*GetAllByProfileIdsResponse)(nil),          // 7: debt.v1.GetAllByProfileIdsResponse
 }
 var file_debt_v1_debt_service_proto_depIdxs = []int32{
 	0, // 0: debt.v1.DebtService.RecordNewTransaction:input_type -> debt.v1.RecordNewTransactionRequest
 	1, // 1: debt.v1.DebtService.GetTransactions:input_type -> debt.v1.GetTransactionsRequest
 	2, // 2: debt.v1.DebtService.ProcessConfirmedGroupExpense:input_type -> debt.v1.ProcessConfirmedGroupExpenseRequest
-	3, // 3: debt.v1.DebtService.RecordNewTransaction:output_type -> debt.v1.RecordNewTransactionResponse
-	4, // 4: debt.v1.DebtService.GetTransactions:output_type -> debt.v1.GetTransactionsResponse
-	5, // 5: debt.v1.DebtService.ProcessConfirmedGroupExpense:output_type -> google.protobuf.Empty
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	3, // 3: debt.v1.DebtService.GetAllByProfileIds:input_type -> debt.v1.GetAllByProfileIdsRequest
+	4, // 4: debt.v1.DebtService.RecordNewTransaction:output_type -> debt.v1.RecordNewTransactionResponse
+	5, // 5: debt.v1.DebtService.GetTransactions:output_type -> debt.v1.GetTransactionsResponse
+	6, // 6: debt.v1.DebtService.ProcessConfirmedGroupExpense:output_type -> google.protobuf.Empty
+	7, // 7: debt.v1.DebtService.GetAllByProfileIds:output_type -> debt.v1.GetAllByProfileIdsResponse
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name

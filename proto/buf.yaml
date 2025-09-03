@@ -1,0 +1,21 @@
+version: v1
+
+deps:
+- buf.build/googleapis/googleapis
+
+lint:
+  use:
+  - STANDARD
+
+  ignore_only:
+    RPC_REQUEST_STANDARD_NAME:
+    - transaction/v1/transfer_method_service.proto
+    RPC_RESPONSE_STANDARD_NAME:
+    - debt/v1/debt_service.proto
+    RPC_REQUEST_RESPONSE_UNIQUE:
+    - debt/v1/debt_service.proto
+    - transaction/v1/transfer_method_service.proto
+
+breaking:
+  use:
+  - FILE

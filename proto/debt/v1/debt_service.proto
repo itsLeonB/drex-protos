@@ -11,4 +11,5 @@ service DebtService {
   rpc RecordNewTransaction(RecordNewTransactionRequest) returns (RecordNewTransactionResponse);
   rpc GetTransactions(GetTransactionsRequest) returns (GetTransactionsResponse);
   rpc ProcessConfirmedGroupExpense(ProcessConfirmedGroupExpenseRequest) returns (google.protobuf.Empty);
+  rpc GetAllByProfileIds(GetAllByProfileIdsRequest) returns (GetAllByProfileIdsResponse);
 }

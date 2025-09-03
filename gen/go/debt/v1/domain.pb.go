@@ -132,11 +132,12 @@ type TransactionResponse struct {
 	ProfileId      string                 `protobuf:"bytes,2,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
 	Type           TransactionType        `protobuf:"varint,3,opt,name=type,proto3,enum=debt.v1.TransactionType" json:"type,omitempty"`
 	Action         TransactionAction      `protobuf:"varint,4,opt,name=action,proto3,enum=debt.v1.TransactionAction" json:"action,omitempty"`
-	TransferMethod string                 `protobuf:"bytes,5,opt,name=transfer_method,json=transferMethod,proto3" json:"transfer_method,omitempty"`
-	Description    string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
-	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt      *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt      *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
+	Amount         float64                `protobuf:"fixed64,5,opt,name=amount,proto3" json:"amount,omitempty"`
+	TransferMethod string                 `protobuf:"bytes,6,opt,name=transfer_method,json=transferMethod,proto3" json:"transfer_method,omitempty"`
+	Description    string                 `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
+	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt      *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt      *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=deleted_at,json=deletedAt,proto3" json:"deleted_at,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -197,6 +198,13 @@ func (x *TransactionResponse) GetAction() TransactionAction {
 		return x.Action
 	}
 	return TransactionAction_TRANSACTION_ACTION_UNSPECIFIED
+}
+
+func (x *TransactionResponse) GetAmount() float64 {
+	if x != nil {
+		return x.Amount
+	}
+	return 0
 }
 
 func (x *TransactionResponse) GetTransferMethod() string {
@@ -366,21 +374,23 @@ var File_debt_v1_domain_proto protoreflect.FileDescriptor
 
 const file_debt_v1_domain_proto_rawDesc = "" +
 	"\n" +
-	"\x14debt/v1/domain.proto\x12\adebt.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa2\x03\n" +
+	"\x14debt/v1/domain.proto\x12\adebt.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xba\x03\n" +
 	"\x13TransactionResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
 	"profile_id\x18\x02 \x01(\tR\tprofileId\x12,\n" +
 	"\x04type\x18\x03 \x01(\x0e2\x18.debt.v1.TransactionTypeR\x04type\x122\n" +
-	"\x06action\x18\x04 \x01(\x0e2\x1a.debt.v1.TransactionActionR\x06action\x12'\n" +
-	"\x0ftransfer_method\x18\x05 \x01(\tR\x0etransferMethod\x12 \n" +
-	"\vdescription\x18\x06 \x01(\tR\vdescription\x129\n" +
+	"\x06action\x18\x04 \x01(\x0e2\x1a.debt.v1.TransactionActionR\x06action\x12\x16\n" +
+	"\x06amount\x18\x05 \x01(\x01R\x06amount\x12'\n" +
+	"\x0ftransfer_method\x18\x06 \x01(\tR\x0etransferMethod\x12 \n" +
+	"\vdescription\x18\a \x01(\tR\vdescription\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
+	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xe1\x01\n" +
+	"deleted_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xe1\x01\n" +
 	"\x10GroupExpenseData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12(\n" +
 	"\x10payer_profile_id\x18\x02 \x01(\tR\x0epayerProfileId\x12,\n" +

@@ -3,6 +3,7 @@ syntax = "proto3";
 package debt.v1;
 
 import "debt/v1/domain.proto";
+import "google/type/money.proto";
 
 option go_package = "github.com/itsLeonB/drex-protos/gen/go/debt/v1;debt";
 
@@ -10,9 +11,9 @@ message RecordNewTransactionRequest {
   string user_profile_id = 1;
   string friend_profile_id = 2;
   TransactionAction action = 3;
-  double amount = 4;
+  google.type.Money amount = 4;
   string transfer_method_id = 5;
-  string note = 6;
+  string description = 6;
 }
 
 message RecordNewTransactionResponse {
@@ -29,4 +30,13 @@ message GetTransactionsResponse {
 
 message ProcessConfirmedGroupExpenseRequest {
   GroupExpenseData group_expense = 1;
+}
+
+message GetAllByProfileIdsRequest {
+  string user_profile_id = 1;
+  string friend_profile_id = 2;
+}
+
+message GetAllByProfileIdsResponse {
+  repeated TransactionResponse transactions = 1;
 }

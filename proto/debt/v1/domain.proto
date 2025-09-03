@@ -3,6 +3,7 @@ syntax = "proto3";
 package debt.v1;
 
 import "google/protobuf/timestamp.proto";
+import "google/type/money.proto";
 
 option go_package = "github.com/itsLeonB/drex-protos/gen/go/debt/v1;debt";
 
@@ -25,11 +26,12 @@ message TransactionResponse {
   string profile_id = 2;
   TransactionType type = 3;
   TransactionAction action = 4;
-  string transfer_method = 5;
-  string description = 6;
-  google.protobuf.Timestamp created_at = 7;
-  google.protobuf.Timestamp updated_at = 8;
-  google.protobuf.Timestamp deleted_at = 9;
+  google.type.Money amount = 5;
+  string transfer_method = 6;
+  string description = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+  google.protobuf.Timestamp deleted_at = 10;
 }
 
 message GroupExpenseData {
@@ -42,5 +44,5 @@ message GroupExpenseData {
 
 message ExpenseParticipantData {
   string profile_id = 1;
-  double share_amount = 2;
+  google.type.Money share_amount = 2;
 }

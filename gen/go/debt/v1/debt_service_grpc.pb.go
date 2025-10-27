@@ -24,6 +24,7 @@ const (
 	DebtService_GetTransactions_FullMethodName              = "/debt.v1.DebtService/GetTransactions"
 	DebtService_ProcessConfirmedGroupExpense_FullMethodName = "/debt.v1.DebtService/ProcessConfirmedGroupExpense"
 	DebtService_GetAllByProfileIds_FullMethodName           = "/debt.v1.DebtService/GetAllByProfileIds"
+	DebtService_UpdateProfileId_FullMethodName              = "/debt.v1.DebtService/UpdateProfileId"
 )
 
 // DebtServiceClient is the client API for DebtService service.
@@ -34,6 +35,7 @@ type DebtServiceClient interface {
 	GetTransactions(ctx context.Context, in *GetTransactionsRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error)
 	ProcessConfirmedGroupExpense(ctx context.Context, in *ProcessConfirmedGroupExpenseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetAllByProfileIds(ctx context.Context, in *GetAllByProfileIdsRequest, opts ...grpc.CallOption) (*GetAllByProfileIdsResponse, error)
+	UpdateProfileId(ctx context.Context, in *UpdateProfileIdRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type debtServiceClient struct {
@@ -84,6 +86,16 @@ func (c *debtServiceClient) GetAllByProfileIds(ctx context.Context, in *GetAllBy
 	return out, nil
 }
 
+func (c *debtServiceClient) UpdateProfileId(ctx context.Context, in *UpdateProfileIdRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, DebtService_UpdateProfileId_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DebtServiceServer is the server API for DebtService service.
 // All implementations must embed UnimplementedDebtServiceServer
 // for forward compatibility.
@@ -92,6 +104,7 @@ type DebtServiceServer interface {
 	GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error)
 	ProcessConfirmedGroupExpense(context.Context, *ProcessConfirmedGroupExpenseRequest) (*emptypb.Empty, error)
 	GetAllByProfileIds(context.Context, *GetAllByProfileIdsRequest) (*GetAllByProfileIdsResponse, error)
+	UpdateProfileId(context.Context, *UpdateProfileIdRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedDebtServiceServer()
 }
 
@@ -113,6 +126,9 @@ func (UnimplementedDebtServiceServer) ProcessConfirmedGroupExpense(context.Conte
 }
 func (UnimplementedDebtServiceServer) GetAllByProfileIds(context.Context, *GetAllByProfileIdsRequest) (*GetAllByProfileIdsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllByProfileIds not implemented")
+}
+func (UnimplementedDebtServiceServer) UpdateProfileId(context.Context, *UpdateProfileIdRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProfileId not implemented")
 }
 func (UnimplementedDebtServiceServer) mustEmbedUnimplementedDebtServiceServer() {}
 func (UnimplementedDebtServiceServer) testEmbeddedByValue()                     {}
@@ -207,6 +223,24 @@ func _DebtService_GetAllByProfileIds_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DebtService_UpdateProfileId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateProfileIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DebtServiceServer).UpdateProfileId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DebtService_UpdateProfileId_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DebtServiceServer).UpdateProfileId(ctx, req.(*UpdateProfileIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DebtService_ServiceDesc is the grpc.ServiceDesc for DebtService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -229,6 +263,10 @@ var DebtService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllByProfileIds",
 			Handler:    _DebtService_GetAllByProfileIds_Handler,
+		},
+		{
+			MethodName: "UpdateProfileId",
+			Handler:    _DebtService_UpdateProfileId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

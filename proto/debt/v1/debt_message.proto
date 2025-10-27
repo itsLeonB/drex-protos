@@ -40,3 +40,8 @@ message GetAllByProfileIdsRequest {
 message GetAllByProfileIdsResponse {
   repeated TransactionResponse transactions = 1;
 }
+
+message UpdateProfileIdRequest {
+  string old_profile_id = 1;
+  string new_profile_id = 2;
+}
